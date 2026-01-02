@@ -1,15 +1,31 @@
-const CACHE_NAME = "csv-cleaner-v2"; // Cambia a v2, v3, etc., cuando subas cambios a GitHub
+const CACHE_NAME = "csv-cleaner-v3"; 
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
   "./css/styles.css",
   "./manifest.json",
+  "./sw.js",
+  // CORE & CLEANING 
   "./js/core/App.js",
-  "./js/core/State.js",
+  "./js/core/StateManager.js",
   "./js/core/Orchestrator.js",
+  "./js/cleaning/CleanerRegistry.js",
+  // UI
   "./js/ui/TableRenderer.js",
   "./js/ui/ChecklistPanel.js",
+  // CLEANERS (Ruta: js/cleaning/cleaners/...)
+  "./js/cleaning/cleaners/BaseCleaner.js",
+  "./js/cleaning/cleaners/RemoveEmptyRows.js",
+  "./js/cleaning/cleaners/NormalizeHeaders.js",
+  "./js/cleaning/cleaners/NormalizeNulls.js",
+  "./js/cleaning/cleaners/RemoveDuplicates.js",
+  "./js/cleaning/cleaners/NormalizeDates.js",
+  "./js/cleaning/cleaners/CapitalizeText.js",
+  "./js/cleaning/cleaners/ValidateEmails.js",
+  "./js/cleaning/cleaners/NormalizeBooleans.js",
+  "./js/cleaning/cleaners/DetectOutliers.js",
+  // LIBRERÍAS EXTERNAS
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
   "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css",
