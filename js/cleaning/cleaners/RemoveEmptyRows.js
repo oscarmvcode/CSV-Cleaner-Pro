@@ -1,28 +1,26 @@
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class RemoveEmptyRows extends BaseCleaner {
-  constructor() {
-    super("removeEmptyRows", "Eliminar filas vacías");
+ constructor(config) {
+    super(config);
   }
 
   apply(data) {
-    if (!data || data.length === 0) return [];
+    if (!Array.isArray(data) || data.length === 0) return data;
 
     return data.filter(row => {
-      // Convertimos los valores a array
-      const keys = Object.keys(row);
-      const values = Object.values(row);
+      // Ignoramos completamente filas sin objeto válido
+      if (!row || typeof row !== "object") return false;
 
-      // Verificamos si hay contenido real ignorando la primera columna (ID)
-      // Empezamos desde el índice 1 (nombre, edad, etc.)
-      const hasContent = values.slice(1).some(v => {
-        if (v === null || v === undefined) return false;
-        const s = String(v).trim().toLowerCase();
-        return s !== "" && s !== "null" && s !== "undefined";
-      });
+      // Verificamos si al menos UNA columna (excepto id) tiene contenido real
+      return Object.entries(row)
+        .filter(([key]) => key !== "id")
+        .some(([, value]) => {
+          if (value === null || value === undefined) return false;
 
-      // Si no tiene contenido en las columnas de datos, la borramos
-      return hasContent;
+          const s = String(value).trim().toLowerCase();
+          return s !== "" && s !== "null" && s !== "nan" && s !== "n/a";
+        });
     });
   }
 }

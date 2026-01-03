@@ -1,52 +1,49 @@
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class NormalizeDates extends BaseCleaner {
-  constructor() {
-    super("normalizeDates", "Normalizar fechas");
+  constructor(config) {
+    super(config);
   }
 
   apply(data) {
-    if (!data.length) return data;
+    if (!Array.isArray(data) || data.length === 0) return data;
 
+    // 1. Identificar qué columnas parecen contener fechas
     const dateColumns = Object.keys(data[0]).filter(key => {
       const k = key.toLowerCase();
-      const val = data[0][key];
-      return k.includes("fecha") || k.includes("date") || k.includes("registro") || 
-             (val && (String(val).includes("-") || String(val).includes("/")));
+      return k.includes("fecha") || k.includes("date") || k.includes("registro");
     });
 
     return data.map(row => {
       const clean = { ...row };
 
       dateColumns.forEach(col => {
-        let value = row[col];
+        const rawValue = clean[col];
 
-        if (value === null || value === undefined || String(value).trim() === "") {
-          return; 
+        // Manejo de valores vacíos o nulos
+        if (!rawValue || String(rawValue).trim() === "" || String(rawValue).toUpperCase() === "N/A") {
+          clean[col] = null;
+          return;
         }
 
-        // --- MEJORA: Pre-procesamiento de formato DD/MM/YYYY o DD-MM-YYYY ---
-        let dateStr = String(value).trim();
-        
-        // Si detectamos que empieza con día (2 dígitos) y tiene barras o guiones
-        // Ejemplo: 15/10/2024 -> 2024-10-15
-        const latinFormat = /^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/;
-        const match = dateStr.match(latinFormat);
+        // 2. Definir dateStr limpiando el valor original
+        let dateStr = String(rawValue).trim();
 
+        // Soporte básico para formato latino DD/MM/YYYY -> convertir a YYYY-MM-DD
+        const latinRegex = /^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/;
+        const match = dateStr.match(latinRegex);
         if (match) {
-          // Reordenamos a formato ISO (YYYY-MM-DD) para que Date() no se confunda
-          dateStr = `${match[3]}-${match[2].padStart(2, '0')}-${match[1].padStart(2, '0')}`;
+          dateStr = `${match[3]}-${match[2].padStart(2, "0")}-${match[1].padStart(2, "0")}`;
         }
 
         const d = new Date(dateStr);
-        
-        if (!isNaN(d.getTime())) {
-          // Usamos getUTC para evitar que el cambio de zona horaria reste un día
-          const year = d.getUTCFullYear();
-          const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-          const day = String(d.getUTCDate()).padStart(2, '0');
-          
-          clean[col] = `${year}-${month}-${day}`;
+
+        // 3. Validación de rango y veracidad
+        if (isNaN(d.getTime()) || d.getFullYear() > 2100 || d.getFullYear() < 1900) {
+          clean[col] = null; 
+        } else {
+          // Guardar en formato ISO estándar (YYYY-MM-DD)
+          clean[col] = d.toISOString().split('T')[0];
         }
       });
 

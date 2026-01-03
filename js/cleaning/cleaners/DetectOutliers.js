@@ -1,41 +1,45 @@
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class DetectOutliers extends BaseCleaner {
-  constructor() {
-    super("detectOutliers", "Detectar outliers");
+  constructor(config) {
+    super(config);
   }
 
-  apply(data) {
-    if (!data.length) return data;
-    const keys = Object.keys(data[0]);
+  apply(rows) {
+    if (!Array.isArray(rows) || rows.length === 0) return rows;
 
-    keys.forEach(key => {
-      const nums = data
-        .map(row => {
-          const val = row[key];
-          return (val !== null && val !== "" && !isNaN(val)) ? Number(val) : NaN;
-        })
-        .filter(n => !isNaN(n)); 
+    const keys = Object.keys(rows[0]);
 
-      if (nums.length < 5) return; 
+    return rows.map(row => ({ ...row })).map((_, __, clonedRows) => {
+      keys.forEach(key => {
+        const values = clonedRows
+          .map(r => {
+            const v = r[key];
+            return typeof v === "number" || (!isNaN(v) && v !== "" && v !== null)
+              ? Number(v)
+              : null;
+          })
+          .filter(v => v !== null);
 
-      const mean = nums.reduce((a, b) => a + b, 0) / nums.length;
-      const std = Math.sqrt(
-        nums.reduce((s, v) => s + (v - mean) ** 2, 0) / nums.length
-      );
+        if (values.length < 5) return;
 
-      if (std === 0) return;
+        const mean = values.reduce((a, b) => a + b, 0) / values.length;
+        const variance =
+          values.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) /
+          values.length;
+        const std = Math.sqrt(variance);
 
-      data.forEach(row => {
-        const v = Number(row[key]);
-        if (!isNaN(v) && row[key] !== null && row[key] !== "") {
-          if (Math.abs(v - mean) > 3 * std) {
-            row[`is_outlier_${key}`] = "ANOMALY";
+        if (std === 0) return;
+
+        clonedRows.forEach(r => {
+          const v = Number(r[key]);
+          if (!isNaN(v) && Math.abs(v - mean) > 3 * std) {
+            r[`outlier_${key}`] = true;
           }
-        }
+        });
       });
-    });
 
-    return data;
+      return _;
+    });
   }
 }

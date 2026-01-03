@@ -1,103 +1,53 @@
-id,nombre,email,telefono,ciudad,fecha_registro,puntos,activo
-1,Juan Perez,juan.perez@gmail.com,92222333,Quito,2024-09-15,1200,true
-2,  Maria Garcia  ,m.garcia@outlook.com,93333444,Guayaquil,15/10/2024,1500,TRUE
-2,  Maria Garcia  ,m.garcia@outlook.com,93333444,Guayaquil,15/10/2024,1500,TRUE
-3,Luis_Cano,luis.cano_at_gmail.com,94444555,CUENCA,,2900,false
-4,ANNA SMITH,anna.smith@gmail,95555666,quito,2024-11-01,1100,yes
-5,Jose R.,jose.r@empresa.com,96666777,Manta,2024-11-15,null,true
-6,,vacio@test.com,97777888,Loja,2024-12-01,2000,false
-7,Carlos Gomez,carlos.g@gmail.com,98888999,,2024-12-15,2200,1
-8,ELENA PAZ,elena.p@gmail.com,99999000,Ambato,2025/01/01,1600,true
-9,Pedro Picapiedra,pedro@roca.com,91111111,Quito,2025-01-15,1400,FALSE
-10,Marta "La Jefa",marta@jefa.com,92222222,GUAYAQUIL,2025-02-01,2800,true
-1,Juan Perez,juan.perez@gmail.com,92222333,Quito,2024-09-15,1200,true
-11,Roberto  M.,roberto@test,93333333,Cuenca,2025-02-15,1900,true
-12,Sonia S.,sonia.s@gmail.com,94444444,Quito,2025-03-01,1300,N/A
-13,Raul Vazquez,raul.v@gmail.com,95555555,Manta,2025-03-15,2500,false
-14,Ines Gomez,ines.g@gmail.com,96666666,Quito,2025-04-01,3000,true
-15,  Felipe  ,felipe@correo.com,97777777,Loja,2025-04-15,1100,true
-16,Sara Q.,sara.q@gmail.com,98888888,Ambato,2025-05-01,2100,true
-17,Hugo Boss,hugo@boss.com,99999999,Manta,2025-05-15,2700,true
-18,Lina M.,lina.m@gmail.com,91111222,Quito,2025-06-01,1500,false
-19,Mina W.,mina.w@gmail.com,92222333,Guayaquil,2025-06-15,2900,true
-20,Nico Y.,nico.y@gmail.com,93333444,Cuenca,2025-07-01,2200,true
-21,Otto A.,otto.a@gmail.com,94444555,Quito,2025-07-15,3500,true
-22,Pol B.,pol.b@gmail.com,95555666,Loja,2025-08-01,1000,true
-23,Quara C.,quara.c@gmail.com,96666777,Ambato,2025-08-15,2400,false
-24,Ruy D.,ruy.d@gmail.com,97777888,Manta,2025-09-01,1800,true
-25,Sia E.,sia.e@gmail.com,98888999,Quito,2025-09-15,1600,true
-26,Teo F.,teo.f@gmail.com,99999000,Guayaquil,2025-10-01,2000,true
-27,Uriel G.,uriel.g@gmail.com,91111111,Cuenca,2025-10-15,2200,true
-28,Vera H.,vera.h@gmail.com,92222222,Quito,2025-11-01,1400,false
-29,Walter I.,walter.i@gmail.com,93333333,Manta,2025-11-15,2800,true
-30,Xenia J.,xenia.j@gmail.com,94444444,Quito,2025-12-01,1900,true
-31,Yago K.,yago.k@gmail.com,95555555,Loja,2025-12-15,1300,true
-32,Zoe L.,zoe.l@gmail.com,96666666,Ambato,2026-01-01,2500,true
-33,Alan M.,alan.m@gmail.com,97777777,Manta,2026-01-15,3000,true
-34,Beto N.,beto.n@gmail.com,98888888,Quito,2026-02-01,1100,false
-35,Ceci O.,ceci.o@gmail.com,99999999,Guayaquil,2026-02-15,2100,true
-36,Dany P.,dany.p@gmail.com,91111222,Cuenca,2026-03-01,2700,true
-37,Enzo Q.,enzo.q@gmail.com,92222333,Quito,2026-03-15,1500,true
-38,Fina R.,fina.r@gmail.com,93333444,Loja,2026-04-01,2900,true
-39,Gaby S.,gaby.s@gmail.com,94444555,Ambato,2026-04-15,2200,true
-40,Hans T.,hans.t@gmail.com,95555666,Manta,2026-05-01,3500,false
-41,Ines U.,ines.u@gmail.com,96666777,Quito,2026-05-15,1000,true
-42,Jara V.,jara.v@gmail.com,97777888,Guayaquil,2026-06-01,2400,true
-43,Kiko W.,kiko.w@gmail.com,98888999,Cuenca,2026-06-15,1800,true
-44,Lina X.,lina.x@gmail.com,99999000,Quito,2026-07-01,1600,true
-45,Mina Y.,mina.y@gmail.com,91111111,Loja,2026-07-15,2000,true
-46,Nico Z.,nico.z@gmail.com,92222222,Ambato,2026-08-01,2200,false
-47,Otto A.,otto.a@gmail.com,93333333,Manta,2026-08-15,1400,true
-48,Pol B.,pol.b@gmail.com,94444444,Quito,2026-09-01,2800,true
-49,Quara C.,quara.c@gmail.com,95555555,Guayaquil,2026-09-15,1900,true
-50,Ruy D.,ruy.d@gmail.com,96666666,Cuenca,2026-10-01,1300,true
-51,Sia E.,sia.e@gmail.com,97777777,Quito,2026-10-15,2500,true
-52,Teo F.,teo.f@gmail.com,98888888,Loja,2026-11-01,3000,false
-53,Uriel G.,uriel.g@gmail.com,99999999,Ambato,2026-11-15,1100,true
-54,Vera H.,vera.h@gmail.com,91111222,Manta,2026-12-01,2100,true
-55,Walter I.,walter.i@gmail.com,92222333,Quito,2026-12-15,2700,true
-56,Xenia J.,xenia.j@gmail.com,93333444,Guayaquil,2027-01-01,1500,true
-57,Yago K.,yago.k@gmail.com,94444555,Cuenca,2027-01-15,2900,true
-58,Zoe L.,zoe.l@gmail.com,95555666,Quito,2027-02-01,2200,false
-59,Alan M.,alan.m@gmail.com,96666777,Loja,2027-02-15,3500,true
-60,Beto N.,beto.n@gmail.com,97777888,Ambato,2027-03-01,1000,true
-61,Ceci O.,ceci.o@gmail.com,98888999,Manta,2027-03-15,2400,true
-62,Dany P.,dany.p@gmail.com,99999000,Quito,2027-04-01,1800,true
-63,Enzo Q.,enzo.q@gmail.com,91111111,Guayaquil,2027-04-15,1600,true
-64,Fina R.,fina.r@gmail.com,92222222,Cuenca,2027-05-01,2000,false
-65,Gaby S.,gaby.s@gmail.com,93333333,Quito,2027-05-15,2200,true
-66,Hans T.,hans.t@gmail.com,94444444,Loja,2027-06-01,1400,true
-67,Ines U.,ines.u@gmail.com,95555555,Ambato,2027-06-15,2800,true
-68,Jara V.,jara.v@gmail.com,96666666,Manta,2027-07-01,1900,true
-69,Kiko W.,kiko.w@gmail.com,97777777,Quito,2027-07-15,1300,true
-70,Lina X.,lina.x@gmail.com,98888888,Guayaquil,2027-08-01,2500,false
-71,Mina Y.,mina.y@gmail.com,99999999,Cuenca,2027-08-15,3000,true
-72,Nico Z.,nico.z@gmail.com,91111222,Quito,2027-09-01,1100,true
-73,Otto A.,otto.a@gmail.com,92222333,Loja,2027-09-15,2100,true
-74,Pol B.,pol.b@gmail.com,93333444,Ambato,2027-10-01,2700,true
-75,Quara C.,quara.c@gmail.com,94444555,Manta,2027-10-15,1500,true
-76,Ruy D.,ruy.d@gmail.com,95555666,Quito,2027-11-01,2900,false
-77,Sia E.,sia.e@gmail.com,96666777,Guayaquil,2027-11-15,2200,true
-78,Teo F.,teo.f@gmail.com,97777888,Cuenca,2027-12-01,3500,true
-79,Uriel G.,uriel.g@gmail.com,98888999,Quito,2027-12-15,1000,true
-80,Vera H.,vera.h@gmail.com,99999000,Loja,2028-01-01,2400,true
-81,Walter I.,walter.i@gmail.com,91111111,Ambato,2028-01-15,1800,true
-82,Xenia J.,xenia.j@gmail.com,92222222,Manta,2028-02-01,1600,false
-83,Yago K.,yago.k@gmail.com,93333333,Quito,2028-02-15,2000,true
-84,Zoe L.,zoe.l@gmail.com,94444444,Guayaquil,2028-03-01,2200,true
-85,Alan M.,alan.m@gmail.com,95555555,Cuenca,2028-03-15,1400,true
-86,Beto N.,beto.n@gmail.com,96666666,Quito,2028-04-01,2800,true
-87,Ceci O.,ceci.o@gmail.com,97777777,Loja,2028-04-15,1900,true
-88,Dany P.,dany.p@gmail.com,98888888,Ambato,2028-05-01,1300,false
-89,Enzo Q.,enzo.q@gmail.com,99999999,Manta,2028-05-15,2500,true
-90,Fina R.,fina.r@gmail.com,91111222,Quito,2028-06-01,3000,true
-91,Gaby S.,gaby.s@gmail.com,92222333,Guayaquil,2028-06-15,1100,true
-92,Hans T.,hans.t@gmail.com,93333444,Cuenca,2028-07-01,2100,true
-93,Ines U.,ines.u@gmail.com,94444555,Quito,2028-07-15,2700,true
-94,Jara V.,jara.v@gmail.com,95555666,Loja,2028-08-01,1500,false
-95,Kiko W.,kiko.w@gmail.com,96666777,Ambato,2028-08-15,2900,true
-96,Lina X.,lina.x@gmail.com,97777888,Manta,2028-09-01,2200,true
-97,Mina Y.,mina.y@gmail.com,98888999,Quito,2028-09-15,3500,true
-98,Nico Z.,nico.z@gmail.com,99999000,Guayaquil,2028-10-01,1000,true
-99,Otto A.,otto.a@gmail.com,91111111,Cuenca,2028-10-15,2400,true
-100,Pol B.,pol.b@gmail.com,92222222,Quito,2028-11-01,1800,false
+id,nombre,email,edad,ciudad,fecha_registro,ingreso
+1,MARIA LOPEZ,null,27,guayaquil,05/01/2023,700.5
+2,carlos,,NaN,cuenca,2023-01-07,abc
+3,Ana Torres,ana.torres@gmail.com,22,QUITO,N/A,450
+4,Luis Gómez,luis@gmail.com,-5,Loja,2023-12-24,300
+1,Maria Lopez,NULL,27,Guayaquil,05-01-2023,700.5
+6, JUAN PEREZ ,juan.perez@gmail.com,25,quito,2023/01/05,500
+6,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
+,Incompleto,,30,Manta,2023-05-10,null
+9,Elena Cano,elena@gmail,40,Sevilla,2023-15-20,1000
+10,Pedro Picapiedra,pedro@rocks.com,150,Bedrock,1800-01-01,0
+11,Maria Lopez,m.lopez@gmail.com,27,Guayaquil,2023-01-05,700.5
+12,Carlos,carlos@test.com,30,Cuenca,07/01/2023,800
+13,Ana Torres,ana.torres@gmail.com,22,Quito,2023-01-10,450
+14,Luis Gomez,luis@gmail.com,35,Loja,2023-12-24,300
+15,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
+16,Maria Lopez,null,27,Quito,2023-01-05,700.5
+17,Carlos,null,null,Cuenca,2023-01-07,null
+18,Ana Torres,ana.torres@gmail.com,null,Quito,null,450
+20,Juan Perez,null,25,Quito,2023-01-05,null
+,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+22,Carlos,null,null,Cuenca,2023-01-07,null
+23,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+24,Luis GóMez,null,null,Quito,null,300
+25,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
+26,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+27,Carlos,null,null,Cuenca,null,null
+,Ana Torres,null,22,Quito,null,450
+30,Juan Perez,juan.perez@gmail.com,null,Quito,2023-01-05,null
+31,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+32,Carlos,null,null,Quito,2023-01-07,null
+33,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
+36,Maria Lopez,null,null,Guayaquil,null,700.5
+37,Carlos,null,null,Cuenca,2023-01-07,null
+38,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+40,Juan Perez,null,25,Quito,2023-01-05,null
+41,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+43,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+45,Juan Perez,juan.perez@gmail.com,25,Quito,null,500
+46,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+47,Carlos,null,null,Cuenca,2023-01-07,null
+48,Ana Torres,null,null,Quito,null,450
+50,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,null
+51,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
+52,Carlos,null,null,Cuenca,2023-01-07,null
+53,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+54,Luis GóMez,luis@gmail.com,null,Loja,null,300
+55,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
+,Maria Lopez,null,27,Quito,2023-01-05,700.5
+57,Carlos,null,null,Cuenca,2023-01-07,null
+58,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
+60,Juan Perez,null,null,Quito,2023-01-05,null

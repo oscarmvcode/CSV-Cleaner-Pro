@@ -28,60 +28,85 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <div class="card shadow-sm mb-4">
-        <div class="card-header bg-white py-3">
-          <h5 class="card-title mb-0 text-primary fw-bold">Opciones de limpieza</h5>
-        </div>
-        <div class="card-body">
-          <div class="row g-3" id="checklistContainer">
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="removeEmptyRows" id="check1" checked>
-      <label class="form-check-label" for="check1">Eliminar filas vacías</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="normalizeHeaders" id="check2" checked>
-      <label class="form-check-label" for="check2">Normalizar encabezados</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="normalizeNulls" id="check3" checked>
-      <label class="form-check-label" for="check3">Normalizar valores nulos</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="removeDuplicates" id="check4" checked>
-      <label class="form-check-label" for="check4">Eliminar duplicados</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="normalizeDates" id="check5" checked>
-      <label class="form-check-label" for="check5">Normalizar fechas</label>
-    </div>
-  </div>
+  <div class="col-12">
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-white py-3">
+        <h5 class="card-title mb-0 text-primary fw-bold">Opciones de limpieza</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3" id="checklistContainer">
+          
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="remove-empty-rows" id="check1" checked>
+              <label class="form-check-label" for="check1">Eliminar filas vacías</label>
+            </div>
+          </div>
 
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="capitalizeText" id="check6" checked>
-      <label class="form-check-label" for="check6">Capitalizar Nombres/Ciudades</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="validateEmails" id="check7" checked>
-      <label class="form-check-label" for="check7">Validar Formato de Emails</label>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" data-cleaner="normalizeBooleans" id="check8" checked>
-      <label class="form-check-label" for="check8">Normalizar Si/No (Activo)</label>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="normalize-headers" id="check2" checked>
+              <label class="form-check-label" for="check2">Normalizar encabezados</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="normalize-nulls" id="check3" checked>
+              <label class="form-check-label" for="check3">Normalizar valores nulos</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="normalize-dates" id="check5" checked>
+              <label class="form-check-label" for="check5">Normalizar fechas</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="normalize-numbers" id="check_num" checked>
+              <label class="form-check-label" for="check_num">Normalizar números (Ingresos)</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="capitalize-text" id="check6" checked>
+              <label class="form-check-label" for="check6">Capitalizar Nombres/Ciudades</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="validate-emails" id="check7" checked>
+              <label class="form-check-label" for="check7">Validar Formato de Emails</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="normalize-booleans" id="check8" checked>
+              <label class="form-check-label" for="check8">Normalizar Si/No (Activo)</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="remove-invalid-rows" id="check9" checked>
+              <label class="form-check-label" for="check9">Eliminar filas inválidas (Edad -5)</label>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" data-cleaner="remove-duplicates" id="check4" checked>
+              <label class="form-check-label" for="check4">Eliminar duplicados</label>
+            </div>
+          </div>
+
+        </div> </div>
     </div>
   </div>
 </div>

@@ -1,29 +1,26 @@
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class CapitalizeText extends BaseCleaner {
-  constructor() {
-    super("capitalizeText", "Capitalizar nombres y ciudades");
+  constructor(config) {
+    super(config);
   }
 
-  apply(data) {
-    if (!data.length) return data;
-
-    // Identificamos columnas que suelen ser nombres o ciudades
-    const textColumns = Object.keys(data[0]).filter(key => {
-      const k = key.toLowerCase();
-      return k.includes("nombre") || k.includes("ciudad") || k.includes("pais") || k.includes("apellido");
-    });
-
-    return data.map(row => {
-      const clean = { ...row };
-      textColumns.forEach(col => {
-        if (row[col] && typeof row[col] === 'string') {
-          const text = row[col].trim().toLowerCase();
-          // Pone la primera letra en Mayúscula y el resto queda en minúscula
-          clean[col] = text.charAt(0).toUpperCase() + text.slice(1);
+  apply(rows) {
+  return rows.map(row => {
+    const clean = { ...row };
+    Object.keys(clean).forEach(col => {
+      const k = col.toLowerCase().trim();
+      // Forzamos la detección de columnas de texto
+      if (k.includes("ciudad") || k.includes("nombre") || k.includes("apellido")) {
+        if (clean[col]) {
+          clean[col] = String(clean[col])
+            .trim()
+            .toLowerCase()
+            .replace(/\b\w/g, l => l.toUpperCase()); // Esto convierte "quito" en "Quito" infaliblemente
         }
-      });
-      return clean;
+      }
     });
-  }
+    return clean;
+  });
+}
 }

@@ -1,22 +1,31 @@
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class RemoveDuplicates extends BaseCleaner {
-  constructor() {
-    super("removeDuplicates", "Eliminar duplicados");
+  constructor(config) {
+    super(config);
   }
 
-  apply(data) {
+  execute(data) {
+    if (!Array.isArray(data) || data.length === 0) return data;
+
     const seen = new Set();
 
     return data.filter(row => {
-      const key = JSON.stringify(
-        Object.values(row).map(v =>
-          v === null || v === undefined ? "" : String(v).trim()
-        )
-      );
+      // Creamos la huella usando solo los datos CLAVE
+      // Ignoramos ID y columnas que suelen estar vacías para poder agrupar
+      const nombre = String(row.nombre || "").trim().toLowerCase();
+      const ciudad = String(row.ciudad || "").trim().toLowerCase();
+      
+      // Si el nombre está vacío, no lo procesamos aquí (lo hará RemoveInvalidRows)
+      if (!nombre) return true;
 
-      if (seen.has(key)) return false;
-      seen.add(key);
+      const fingerprint = `${nombre}|${ciudad}`;
+
+      if (seen.has(fingerprint)) {
+        return false; 
+      }
+
+      seen.add(fingerprint);
       return true;
     });
   }
