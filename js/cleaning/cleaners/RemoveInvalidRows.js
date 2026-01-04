@@ -1,26 +1,36 @@
+// cleaners/RemoveInvalidRows.js
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class RemoveInvalidRows extends BaseCleaner {
-  constructor(config) {
-    super(config);
-  }
 
-  execute(data) {
+  run(data) {
+    if (!Array.isArray(data)) return data;
+
     return data.filter(row => {
-      // 1. Limpieza de Edad (Rango lógico de 0 a 115 años)
-      const edad = parseInt(row.edad);
-      const esEdadValida = !isNaN(edad) && edad >= 0 && edad <= 115;
+      if (row.__isValid === false) return false;
 
-      // 2. Limpieza de Identidad (Debe tener un nombre real)
-      const tieneNombre = row.nombre && 
-                          row.nombre !== "NULL" && 
-                          row.nombre.trim().length > 2;
+      const nombre =
+        row.nombre ||
+        row.nombre_completo ||
+        row.persona ||
+        row.full_name;
 
-      // 3. Limpieza de IDs Fantasma
-      const tieneId = row.id !== null && row.id !== undefined && row.id !== "";
+      const email =
+        row.email ||
+        row.correo ||
+        row.correo_electronico ||
+        row.mailcontacto;
 
-      // Solo si cumple todas las condiciones la fila sobrevive
-      return esEdadValida && tieneNombre && tieneId;
+      const edad =
+        row.edad ||
+        row.anos ||
+        row.anos_de_vida ||
+        row.edadpersona;
+
+      if (!nombre || !email) return false;
+      if (edad != null && Number(edad) <= 0) return false;
+
+      return true;
     });
   }
 }

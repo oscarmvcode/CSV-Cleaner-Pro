@@ -1,23 +1,22 @@
+// cleaners/NormalizeHeaders.js
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class NormalizeHeaders extends BaseCleaner {
-  constructor(config) {
-    super(config);
-  }
+  run(rows) {
+    if (!Array.isArray(rows) || rows.length === 0) return rows;
 
-  apply(data) {
-    if (!Array.isArray(data) || data.length === 0) return data;
-
-    return data.map(row => {
+    return rows.map(row => {
       const clean = {};
-      Object.keys(row).forEach(key => {
-        if (!key) return;
+      Object.entries(row).forEach(([key, value]) => {
         const nk = String(key)
           .trim()
           .toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
           .replace(/\s+/g, "_")
-          .replace(/[^\w]/g, "");
-        clean[nk] = row[key];
+          .replace(/[^\w]/g, "")
+          .replace(/_+/g, "_");
+
+        clean[nk || `col_${Math.random().toString(36).slice(2, 6)}`] = value;
       });
       return clean;
     });

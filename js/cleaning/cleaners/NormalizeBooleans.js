@@ -1,26 +1,30 @@
+// cleaners/NormalizeBooleans.js
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class NormalizeBooleans extends BaseCleaner {
-  constructor(config) {
-    super(config);
-  }
+  run(rows, columnMap = {}) {
+    if (!Array.isArray(rows)) return rows;
 
-  apply(data) {
-    if (!Array.isArray(data) || data.length === 0) return data;
+    const fields = [
+      columnMap.estado,
+      "activo",
+      "estado"
+    ].filter(Boolean);
 
-    const TRUE_VALUES = ["true", "1", "yes", "si", "sí", "active"];
-    const FALSE_VALUES = ["false", "0", "no", "inactive"];
+    const TRUE = ["true", "1", "yes", "si", "activo"];
+    const FALSE = ["false", "0", "no", "inactivo"];
 
-    return data.map(row => {
+    return rows.map(row => {
       const clean = { ...row };
 
-      Object.keys(clean).forEach(key => {
-        const value = clean[key];
-        if (typeof value === "string") {
-          const normalized = value.trim().toLowerCase();
-          if (TRUE_VALUES.includes(normalized)) clean[key] = true;
-          else if (FALSE_VALUES.includes(normalized)) clean[key] = false;
-        }
+      fields.forEach(f => {
+        const v = clean[f];
+        if (v == null) return;
+
+        const s = String(v).trim().toLowerCase();
+        if (TRUE.includes(s)) clean[f] = true;
+        else if (FALSE.includes(s)) clean[f] = false;
+        else clean[f] = null;
       });
 
       return clean;

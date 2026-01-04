@@ -1,69 +1,39 @@
+// cleaners/BaseCleaner.js
 export class BaseCleaner {
-  /**
-   * @param {Object} config
-   * @param {string} config.key    Identificador único del cleaner
-   * @param {string} config.label  Texto visible en la UI
-   * @param {number} config.order  Orden de ejecución (obligatorio)
-   */
-  constructor({ key, label, order }) {
-    if (
-      typeof key !== "string" ||
-      typeof label !== "string" ||
-      typeof order !== "number"
-    ) {
-      throw new Error("BaseCleaner requiere key (string), label (string) y order (number)");
-    }
 
-    this.key = key;
-    this.label = label;
-    this.order = order;
+  constructor({ key, label, order } = {}) {
+    this.key = key ?? "unnamed";
+    this.label = label ?? "Unnamed cleaner";
+    this.order = Number.isFinite(order) ? order : 0;
   }
 
   /**
-   * Método principal que DEBE implementar cada cleaner
-   * @param {Array<Object>} rows
-   * @returns {Array<Object>}
+   * Método base de ejecución
+   * - Soporta columnMap
+   * - Evita crashes
+   * - No interfiere con la lógica del cleaner
    */
-  apply(rows) {
-    throw new Error(
-      `${this.constructor.name}: apply() no implementado`
-    );
-  }
+  execute(rows, columnMap) {
+    if (!Array.isArray(rows)) return rows;
 
-  /**
-   * Hook opcional previo
-   */
-  beforeApply(rows) {
-    return rows;
-  }
-
-  /**
-   * Hook opcional posterior
-   */
-  afterApply(rows) {
-    return rows;
-  }
-
-  /**
-   * Ejecución segura del cleaner
-   */
-  execute(rows) {
-    if (!Array.isArray(rows)) {
-      throw new TypeError(
-        `${this.constructor.name} esperaba un array de filas`
+    try {
+      return this.run
+        ? this.run(rows, columnMap)
+        : rows;
+    } catch (err) {
+      console.error(
+        `❌ Error en cleaner "${this.label}" (${this.key}):`,
+        err
       );
+      return rows; // FAIL-SAFE: no rompe el pipeline
     }
+  }
 
-    let result = this.beforeApply(rows);
-    result = this.apply(result);
-    result = this.afterApply(result);
-
-    if (!Array.isArray(result)) {
-      throw new TypeError(
-        `${this.constructor.name} debe retornar un array`
-      );
-    }
-
-    return result;
+  /**
+   * Método que cada cleaner debe implementar
+   * (execute NO se sobreescribe, run SÍ)
+   */
+  run(rows /*, columnMap */) {
+    return rows;
   }
 }

@@ -1,53 +1,10 @@
-id,nombre,email,edad,ciudad,fecha_registro,ingreso
-1,MARIA LOPEZ,null,27,guayaquil,05/01/2023,700.5
-2,carlos,,NaN,cuenca,2023-01-07,abc
-3,Ana Torres,ana.torres@gmail.com,22,QUITO,N/A,450
-4,Luis Gómez,luis@gmail.com,-5,Loja,2023-12-24,300
-1,Maria Lopez,NULL,27,Guayaquil,05-01-2023,700.5
-6, JUAN PEREZ ,juan.perez@gmail.com,25,quito,2023/01/05,500
-6,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
-,Incompleto,,30,Manta,2023-05-10,null
-9,Elena Cano,elena@gmail,40,Sevilla,2023-15-20,1000
-10,Pedro Picapiedra,pedro@rocks.com,150,Bedrock,1800-01-01,0
-11,Maria Lopez,m.lopez@gmail.com,27,Guayaquil,2023-01-05,700.5
-12,Carlos,carlos@test.com,30,Cuenca,07/01/2023,800
-13,Ana Torres,ana.torres@gmail.com,22,Quito,2023-01-10,450
-14,Luis Gomez,luis@gmail.com,35,Loja,2023-12-24,300
-15,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
-16,Maria Lopez,null,27,Quito,2023-01-05,700.5
-17,Carlos,null,null,Cuenca,2023-01-07,null
-18,Ana Torres,ana.torres@gmail.com,null,Quito,null,450
-20,Juan Perez,null,25,Quito,2023-01-05,null
-,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-22,Carlos,null,null,Cuenca,2023-01-07,null
-23,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-24,Luis GóMez,null,null,Quito,null,300
-25,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
-26,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-27,Carlos,null,null,Cuenca,null,null
-,Ana Torres,null,22,Quito,null,450
-30,Juan Perez,juan.perez@gmail.com,null,Quito,2023-01-05,null
-31,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-32,Carlos,null,null,Quito,2023-01-07,null
-33,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
-36,Maria Lopez,null,null,Guayaquil,null,700.5
-37,Carlos,null,null,Cuenca,2023-01-07,null
-38,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-40,Juan Perez,null,25,Quito,2023-01-05,null
-41,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-43,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-45,Juan Perez,juan.perez@gmail.com,25,Quito,null,500
-46,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-47,Carlos,null,null,Cuenca,2023-01-07,null
-48,Ana Torres,null,null,Quito,null,450
-50,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,null
-51,Maria Lopez,null,27,Guayaquil,2023-01-05,700.5
-52,Carlos,null,null,Cuenca,2023-01-07,null
-53,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-54,Luis GóMez,luis@gmail.com,null,Loja,null,300
-55,Juan Perez,juan.perez@gmail.com,25,Quito,2023-01-05,500
-,Maria Lopez,null,27,Quito,2023-01-05,700.5
-57,Carlos,null,null,Cuenca,2023-01-07,null
-58,Ana Torres,ana.torres@gmail.com,22,Quito,null,450
-60,Juan Perez,null,null,Quito,2023-01-05,null
+XJ-Name;MailContact;EdadPersona;FEC_reg;Ingres$;Doc-ID;estado_usuario;extra_01
+juan perez ; JUAN.PEREZ@GMAIL.COM ; 28 ; 15/01/2024 ; 850 ; 102030405 ; activo ; ---
+ANA;;0;; ;;;;
+MARÍA lopez; maria.lopez@hotmail.com ; 34 ; 2023-12-01 ; 1.200,50 ; 203040506 ; si ; ok
+pedro ruiz; error_mail ; 45 ; 20-01-2024 ; NULL ; 506070809 ; no ; --
+lucia martinez; lucia.martinez@yahoo.com ; 130 ; 2024/04/01 ; 700 ; 607080910 ; activo ; x
+Miguel Ángel ; miguel.angel@gmail.com ; 38 ; 2024-01-04 ; $1500 ; 708091011 ; true ; test
+Sofía Herrera; sofia.herrera@gmail.com ; 22 ; 12.05.24 ; 0 ; 809101112 ; false ; n/a
+SOFIA herrera ; sofia.herrera@gmail.com ; 22 ; 2024-05-12 ; 950 ; 809101112 ; activo ; duplicate
+??;;??;;??;;;

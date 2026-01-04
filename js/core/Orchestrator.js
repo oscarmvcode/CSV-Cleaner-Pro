@@ -1,25 +1,39 @@
+// Orchestrator.js
 import { CleanerRegistry } from "../cleaning/CleanerRegistry.js";
+import { Pipeline } from "./Pipeline.js";
 
 export class Orchestrator {
   constructor(state) {
     this.state = state;
   }
 
-  async run(selectedKeys, onProgress) {
-    const rawData = this.state.getRawData();
-    
-    // Copia profunda para no mutar el estado original accidentalmente
+  async run(selectedKeys = [], onProgress) {
+
+    const rawData = this.state.getRawData() || [];
+
+    if (!Array.isArray(rawData) || rawData.length === 0) {
+      throw new Error("No hay datos cargados para limpiar");
+    }
+
     let currentData = structuredClone(rawData);
     const initialCount = currentData.length;
 
-    // 🔐 ÚNICA FUENTE DE VERDAD: Filtramos y ordenamos según la arquitectura definida en el Registry
+    console.log("1️⃣ Datos listos para procesar:", currentData[0]);
+
+    /* ================= PIPELINE ================= */
+    const pipeline = new Pipeline();
+    const { data, columnMap } = pipeline.run(currentData);
+
+    currentData = data;
+
+    /* ================= REGLAS ACTIVAS ================= */
     const activeRules = CleanerRegistry
       .filter(rule => selectedKeys.includes(rule.key))
       .sort((a, b) => a.order - b.order);
 
-    const totalSteps = activeRules.length;
+    const totalSteps = activeRules.length || 1;
 
-    for (let i = 0; i < totalSteps; i++) {
+    for (let i = 0; i < activeRules.length; i++) {
       const rule = activeRules[i];
 
       if (onProgress) {
@@ -29,11 +43,14 @@ export class Orchestrator {
         );
       }
 
-      // Ejecución mediante el método execute (que incluye hooks si los necesitas en el futuro)
-      currentData = rule.execute(currentData);
+      // 🔐 Ejecución segura con o sin columnMap
+      currentData = rule.execute.length > 1
+        ? rule.execute(currentData, columnMap)
+        : rule.execute(currentData);
 
-      // Pausa visual para mejorar la experiencia de usuario
-      await new Promise(resolve => setTimeout(resolve, 30));
+      console.log(`✅ ${rule.label} → Filas: ${currentData.length}`);
+
+      await new Promise(r => setTimeout(r, 30));
     }
 
     this.state.setCleanedData(currentData);

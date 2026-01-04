@@ -1,28 +1,23 @@
+// cleaners/NormalizeNulls.js
 import { BaseCleaner } from "./BaseCleaner.js";
 
 export class NormalizeNulls extends BaseCleaner {
-  constructor(config) {
-    super(config);
-  }
+  run(rows) {
+    if (!Array.isArray(rows)) return rows;
 
-  apply(data) {
-    if (!Array.isArray(data) || data.length === 0) return data;
+    const NULLS = new Set(["", "null", "nan", "undefined", "n/a", "none"]);
 
-    return data.map(row => {
-      const clean = {};
-      Object.keys(row).forEach(key => {
-        const v = row[key];
-        clean[key] =
-          v === "" ||
-          v === " " ||
-          v === "null" ||
-          v === "NULL" ||
-          v === "NaN" ||
-          v === "N/A" ||
-          (typeof v === "number" && isNaN(v))
-            ? null
-            : v;
+    return rows.map(row => {
+      const clean = { ...row };
+
+      Object.keys(clean).forEach(k => {
+        const v = clean[k];
+        if (v == null) clean[k] = null;
+        else if (typeof v === "string" && NULLS.has(v.trim().toLowerCase())) {
+          clean[k] = null;
+        }
       });
+
       return clean;
     });
   }
